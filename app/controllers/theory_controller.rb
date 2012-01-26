@@ -1,0 +1,2 @@
+class TheoryController < ApplicationController
+end

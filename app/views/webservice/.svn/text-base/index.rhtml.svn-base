@@ -1,0 +1,41 @@
+<p><strong>I only have one requirement for using this webservice. Please do not modify, hide, or 
+remove the table's footer which includes a link back to the Prime Fishing Times
+website. Think of this as sort of an enhanced link exchange program. You receive
+free tide data for your site in exchange for links back to my site. It's a win/win
+situation for both of us.</strong></p>
+
+<p>The Prime Fishing Times webservice is a very simple interface that returns 
+an XHTML table of today's tide data for a particular location. To use the
+webservice go to the <a href="<%= url_for :controller => 'locations' %>">Locations</a> 
+page to find the ID of the location you want. The ID is the last part of the URL
+for the Show link.</p>
+
+<p>For instance, the Show link for San Luis Pass, Texas is 
+<a href="http://primefishingtimes.com/home/tides/2721">http://primefishingtimes.com/home/tides/2721</a>. 
+The webservice can be accessed using the ID, 2721, with a link to
+<a href="http://primefishingtimes.com/webservice/tides/2721">http://primefishingtimes.com/webservice/tides/2721</a>.
+If you enter an invalid ID, the webservice will return a table with an empty body
+and a header that says <strong>ERROR: Invalid location ID.</strong></p>
+
+<p>If you're using <a href="http://wordpress.org">Wordpress</a> like I do for my 
+<a href="http://barriault.net">personal blog</a>, you can use PHP code like this:</p>
+
+<pre>
+&lt;?php
+require_once(ABSPATH . WPINC . '/class-snoopy.php');
+ 
+	$snoopy = new Snoopy;
+	
+	$snoopy->fetch(&quote;http://primefishingtimes.com/webservice/tides/2721&quote;);
+	echo $snoopy-&gt;results;
+?&gt;
+
+</pre>
+
+<p>For ideas on visually styling the table visit the CSS Table Gallery here: 
+<a href="http://icant.co.uk/csstablegallery/">http://icant.co.uk/csstablegallery/</a></p>
+
+<p>Information about the development of Prime Fishing Times can be found on my
+<a href="http://barriault.net">personal blog</a>. Feel free to 
+<%= mail_to "jeff@barriault.net", "email me", :encode => "javascript" %> with 
+your comments, questions, or feedback.</p>

@@ -1,0 +1,15 @@
+<h2><%= @location.name -%></h2>
+<h3><%= format_latitude(@location.latitude) %>, <%= format_longitude(@location.longitude) -%></h3>
+
+<div style="text-align: center;">
+    <%= form_remote_tag(:url => {:action => 'update', :controller => 'tides'}, :before => "$('spinner').show()") %>
+        <span onmouseover="calendar_open(document.getElementById('tide_date'),{format:'%d %b %Y',images_dir:'/images',month_names:['January','February','March','April','May','June','July','August','September','October','November','December'],day_names:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']})">
+        <%= image_tag 'date.png' %>
+        </span>
+        <%= date_field('tide', 'date', :value => @chart.date.strftime("%d %b %Y"), :size => 10) %>
+        <%= hidden_field_tag('lat', @location.latitude) %>
+        <%= hidden_field_tag('lng', @location.longitude) %>
+        <input type="submit" value="Show Date">
+        <%= image_tag('spinner.gif', :id => 'spinner', :style => 'display: none;') -%>
+    <%= end_form_tag %>
+</div>

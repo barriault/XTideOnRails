@@ -1,0 +1,10 @@
+# full path to the tide executable
+
+development:
+ /usr/local/bin/tide
+
+test:
+ /usr/local/bin/tide
+
+production:
+ /users/home/barriault/bin/tide

@@ -1,0 +1,18 @@
+<%= render :partial => 'location_heading' -%>
+
+<div id="graph_div">
+
+<div id="chart">
+<%= render :partial => 'chart' -%>
+</div> <!-- table -->
+
+<div id="plot">
+<%= image_tag @graph %>
+</div> <!-- plot -->
+
+<p style="text-align: center; clear: right;"><%= link_to "How to read this graph.", :controller => 'theory' -%></p>
+
+</div> <!-- graph_div -->
+
+<%= render :partial => 'shared/disclaimer' -%>
+        

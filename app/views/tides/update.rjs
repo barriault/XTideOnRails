@@ -1,0 +1,10 @@
+# Replace div id=plot
+page.visual_effect(:toggle_blind, 'graph_div', :duration => 1)
+
+page.delay(2) do
+  page[:plot].replace_html(image_tag(@graph))
+  page[:chart].replace_html(:partial => 'chart')
+  page.visual_effect(:toggle_blind, 'graph_div', :duration => 1, :queue => 'end')
+end
+
+page[:spinner].visual_effect(:fade, :queue => 'end')

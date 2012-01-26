@@ -1,0 +1,13 @@
+<table>
+<caption><%= @chart.date.strftime('%A, %B %d, %Y') -%></caption>
+
+<tbody>
+<% @chart.events.each do |event| -%>
+<tr>
+    <td><%= event.event_time -%></td>
+    <td><%= event.event_type -%></td>
+    <td><%= event.tide_height -%></td>
+</tr>
+<% end -%>
+</tbody>
+</table>

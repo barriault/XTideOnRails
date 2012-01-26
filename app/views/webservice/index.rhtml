@@ -1,0 +1,56 @@
+<p>I only have one requirement for using this webservice. Please provide a link 
+back to the Prime Fishing Times website. Think of this as sort of an enhanced 
+link exchange program. You receive free tide data for your site in exchange for 
+links back to my site. It's a win/win situation for both of us.</p>
+
+<p>The Prime Fishing Times webservice is a very simple interface that returns 
+either an HTML table of today's tide data for a particular location or the same
+data formatted in JSON. To use the webservice, make a note of the URL for the
+location you want.</p>
+
+<p>For instance, the URL for San Luis Pass, Texas is:</p>
+<ul>
+<li>
+<a href="http://primefishingtimes.com/tides/29.0833/-95.1167">
+    http://primefishingtimes.com/tides/29.0833/-95.1167
+</a>
+</li>
+</ul>
+
+<p>The webservice for San Luis Pass, Texas can be accessed using the following URLs:</p>
+<ul>
+<li>
+<strong>HTML:</strong> <a href="http://primefishingtimes.com/webservice/tides.html?lat=29.0833&amp;lng=-95.1167">
+    http://primefishingtimes.com/webservice/tides.html?lat=29.0833&amp;lng=-95.1167
+</a>
+</li>
+<li>
+<strong>JSON:</strong> <a href="http://primefishingtimes.com/webservice/tides.json?lat=29.0833&amp;lng=-95.1167">
+    http://primefishingtimes.com/webservice/tides.json?lat=29.0833&amp;lng=-95.1167
+</a>
+</li>
+</ul>
+
+<p><strong>NOTE:</strong> The old webservice used the database ID for the
+location. Unfortunately, everytime I updated the database with the latest tide
+information the location IDs changed.</p>
+
+<p>If you're using <a href="http://wordpress.org">Wordpress</a> like I do for my 
+<a href="http://barriault.net">personal blog</a>, you can use PHP code like this:</p>
+
+<pre>
+&lt;?php
+require_once(ABSPATH . WPINC . &apos;/class-snoopy.php&apos;);
+ 
+  $snoopy = new Snoopy;
+	
+  $snoopy-&gt;fetch(&quot;http://primefishingtimes.com/webservice/tides.html?lat=29.0833&amp;lng=-95.1167&quot;);
+  echo $snoopy-&gt;results;
+?&gt;
+
+</pre>
+
+<p>Information about the development of Prime Fishing Times can be found on my
+<a href="http://barriault.net">personal blog</a>. Feel free to 
+<%= mail_to "jeff@barriault.net", "email me", :encode => "javascript" %> with 
+your comments, questions, or feedback.</p>
